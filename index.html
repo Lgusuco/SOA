@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>SOA - Dashboard</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="static/bootstrap.min.css">
+		<script src="static/jquery-3.3.1.slim.min.js"></script>
+		<script src="static/popper.min.js"></script>
+		<script src="static/bootstrap.min.js"></script>
+	    <script src="static/jquery.min.js"></script>
+	</head>
+	<body>
+		<header>
+			<div class="jumbotron jumbotron-fluid">
+			  <div class="container">
+			    <h1 class="display-4">Dashboard</h1>
+			    <p class="lead">TOP 30 SERVIÇOS</p>
+			  </div>
+			</div>
+		</header>
+		<div class="container">
+			<nav>
+			  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+			    <a class="nav-item nav-link active" id="nav-esb" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">ESB</a>
+			    <a class="nav-item nav-link" id="nav-wli" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">WLI</a>
+			  </div>
+			</nav>
+			<div class="tab-content" id="nav-tabContent">
+			  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+			  	<div id="esb_table">
+			  </div>
+			  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+			  	<div id="wli_table">
+			  </div>
+			</div>
+		</div>
+		
+		<script>
+			$(document).ready(function(){
+
+			setTimeout(function() {
+		        $("#nav-esb").trigger('click');
+		    },10);
+
+			 $('#nav-esb').click(function(){
+			  $.ajax({
+			   url:"data/employee.csv",
+			   dataType:"text",
+			   success:function(data)
+			   {
+			    var employee_data = data.split(/\r?\n|\r/);
+			    var table_data = '<table class="table table-bordered table-striped"style="margin-top:10px">';
+			    for(var count = 0; count<employee_data.length; count++)
+			    {
+			     var cell_data = employee_data[count].split(",");
+			     table_data += '<tr>';
+			     for(var cell_count=0; cell_count<cell_data.length; cell_count++)
+			     {
+			      if(count === 0)
+			      {
+			       table_data += '<th>'+cell_data[cell_count]+'</th>';
+			      }
+			      else
+			      {
+			       table_data += '<td>'+cell_data[cell_count]+'</td>';
+			      }
+			     }
+			     table_data += '</tr>';
+			    }
+			    table_data += '</table>';
+			    $('#esb_table').html(table_data);
+			   }
+			  });
+			 });
+
+			 $('#nav-wli').click(function(){
+			  $.ajax({
+			   url:"data/TOP30_WLI.csv",
+			   dataType:"text",
+			   success:function(data)
+			   {
+			    var employee_data = data.split(/\r?\n|\r/);
+			    var table_data = '<table class="table table-bordered table-striped" style="margin-top:10px">';
+			    for(var count = 0; count<employee_data.length; count++)
+			    {
+			     var cell_data = employee_data[count].split(",");
+			     table_data += '<tr>';
+			     for(var cell_count=0; cell_count<cell_data.length; cell_count++)
+			     {
+			      if(count === 0)
+			      {
+			       table_data += '<th>'+cell_data[cell_count]+'</th>';
+			      }
+			      else
+			      {
+			       table_data += '<td>'+cell_data[cell_count]+'</td>';
+			      }
+			     }
+			     table_data += '</tr>';
+			    }
+			    table_data += '</table>';
+			    $('#esb_table').html(table_data);
+			   }
+			  });
+			 });
+			 
+			});
+		</script>
+	</body>
+</html>

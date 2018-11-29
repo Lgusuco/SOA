@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>SOA - Dashboard</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="static/bootstrap.min.css">
+		<script src="static/jquery-3.3.1.slim.min.js"></script>
+		<script src="static/popper.min.js"></script>
+		<script src="static/bootstrap.min.js"></script>
+	    <script src="static/jquery.min.js"></script>
+
+	    <style type="text/css">
+		#corteIframe {
+		position: absolute;
+			clip: rect(120px,900cm,750px,180px); 
+			width: 900px; /* pode colocar o mesmo valor do segundo parâmetro */
+		}
+		</style>
+	</head>
+	<body>
+		<header>
+			<div class="jumbotron jumbotron-fluid">
+			  <div class="container">
+			    <h1 class="display-4">Dashboard</h1>
+			    <p class="lead">TOP 30 SERVIÇOS</p>
+			  </div>
+			</div>
+		</header>
+		<div class="container">
+			<nav>
+			  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+			    <a class="nav-item nav-link active" id="nav-esb" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">ESB</a>
+			    <a class="nav-item nav-link" id="nav-wli" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">WLI</a>
+			  </div>
+			</nav>
+			<div class="tab-content" id="nav-tabContent">
+			  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+			  	<div id="corteIframe">
+					<iframe src="http://grafana-net.iaas.dxc.com:5601/app/kibana#/dashboard/AWY1Tmx7HkGZOxNuEklq?_g=()&_a=(description:'',filters:!(),options:(darkTheme:!f),panels:!((col:1,id:AWY1S3YrHkGZOxNuD-2b,panelIndex:6,row:1,size_x:12,size_y:4,type:visualization),(col:1,id:AWY1SOzJHkGZOxNuDgVt,panelIndex:7,row:5,size_x:12,size_y:4,type:visualization)),query:(query_string:(analyze_wildcard:!t,query:'*')),timeRestore:!f,title:TOP30_Servi%C3%A7os,uiState:(P-6:(vis:(params:(sort:(columnIndex:!n,direction:!n)))),P-7:(vis:(params:(sort:(columnIndex:!n,direction:!n))))),viewMode:view)" style="width:100%; height:500px; border: none; " scrolling="no"></iframe>
+				</div>
+			  </div>
+			  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+			  	<div id="wli_table">
+			  </div>
+			</div>
+		</div>
+	
+	</body>
+</html>
